@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "dns-doctor": {
+      "url": "https://dnsdoctor.dev/mcp"
+    }
+  }
+}
