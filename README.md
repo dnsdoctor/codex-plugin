@@ -25,7 +25,7 @@ codex-plugin/
 > field names that changed — the MCP endpoint (`https://dnsdoctor.dev/mcp`,
 > streamable HTTP) is the part that must survive.
 
-## Tools it adds
+## Tools
 
 | Tool | Does |
 |---|---|
