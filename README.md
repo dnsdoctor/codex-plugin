@@ -1,8 +1,9 @@
 # DNS Doctor — Codex / ChatGPT plugin
 
 Wraps the hosted DNS Doctor MCP server as an OpenAI plugin (Codex + ChatGPT) so
-your agent can diagnose and fix a domain's email authentication (SPF, DMARC,
-DKIM, MX, blacklist, domain/SSL expiry). Every fix record is generated and
+your agent can scan, fix and verify a domain's DNS — email authentication (SPF,
+DMARC, DKIM) first, plus multi-region propagation, SPF include supply-chain
+audits, MX, DNS health, blacklists and domain/SSL expiry. Every fix record is generated and
 validated by a deterministic engine — RFC grammar plus the SPF 10-lookup
 counter — **never an LLM guess**.
 
