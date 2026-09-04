@@ -32,7 +32,7 @@ codex-plugin/
 |---|---|
 | `scan_domain` | Fresh scan of a domain; full report. |
 | `get_report` | Persisted report (scans once if none exists). |
-| `build_dmarc_upgrade` | A validated DMARC enforcement record — `p=reject` only when the server-derived alignment gate passes. |
+| `build_dmarc_upgrade` | A validated DMARC enforcement record, capped at `p=quarantine` and returned only when the server-derived alignment gate passes; without that evidence the answer is reporting-first and no record is returned. `p=reject` comes from the readiness engine's aggregate-report evidence, never from a scan. |
 | `count_spf_lookups` | The SPF DNS-lookup count against the RFC limit of 10. |
 | `validate_dmarc_record` | Parse and validate a DMARC record, tag by tag. |
 | `generate_dmarc_record` | Build a DMARC record from a policy + reporting address. |
