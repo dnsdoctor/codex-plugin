@@ -16,6 +16,8 @@ codex-plugin/
 ├── .mcp.json                # the MCP connector (https://dnsdoctor.dev/mcp)
 ├── skills/dns-doctor/       # the bundled skill ($-invoked in Codex, @ in ChatGPT)
 │   └── SKILL.md
+├── skills/setup/            # first-run onboarding in ChatGPT (onboardingSkill)
+│   └── SKILL.md
 ├── LICENSE                  # Apache-2.0
 └── README.md
 ```
