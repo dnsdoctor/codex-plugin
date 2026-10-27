@@ -59,6 +59,10 @@ clear next step.
      `done`, `wait` (wait `check_again_after_seconds` before checking again) or
      `edit`. A `transient` or `fault` outcome is our lookup,
      not their DNS: try again shortly.
+     If the user cannot make the DNS change themselves, offer the ready
+     `help.ticket` message for their DNS host's support, or `help.web_person`
+     for whoever manages their DNS, verbatim; never compose a record.
+     `help.support_url`, when present, is their host's support page.
    - **Website setup**: call `start_monitoring_signup` and show its `signup_url`
      as a clickable link with its `message`, using the returned URL without changing
      it. A description without printing the URL is not enough. Use this path
