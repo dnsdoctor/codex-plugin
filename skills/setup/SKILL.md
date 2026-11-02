@@ -54,7 +54,9 @@ clear next step.
      `add_monitored_domain` returned (`challenge.host`, `challenge.value`)
      verbatim instead. The check's outcome is `not_found` until they publish,
      which is expected: "publish it, then tell me and I'll check again". When
-     they do, call `check_domain_verification` again. To see whether the record
+     they do, call `check_domain_verification` again. Tell them they don't have
+     to come back: for a week after the domain is added, DNS Doctor re-checks it
+     on its own and emails them once it's verified. To see whether the record
      itself is live yet, `check_record` with `expected_value` set to it answers
      `done`, `wait` (wait `check_again_after_seconds` before checking again) or
      `edit`. A `transient` or `fault` outcome is our lookup,
