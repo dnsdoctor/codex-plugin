@@ -18,6 +18,10 @@ codex-plugin/
 │   └── SKILL.md
 ├── skills/setup/            # first-run onboarding in ChatGPT (onboardingSkill)
 │   └── SKILL.md
+├── skills/verify-change/    # did my change land → propagation → look again
+│   └── SKILL.md
+├── skills/fix-dmarc/        # scan → next DMARC record → re-check
+│   └── SKILL.md
 ├── LICENSE                  # Apache-2.0
 └── README.md
 ```
