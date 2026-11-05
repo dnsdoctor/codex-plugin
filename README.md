@@ -63,7 +63,7 @@ The three monitoring reads are **listed for everyone and callable with a token**
 they appear in the tool list, and without a valid token the call is refused with
 the page the account owner mints one on. The `dnsdoctor://domains` resource
 (your monitored domains) is likewise always listed and refused without a token.
-Anonymous access covers all nineteen diagnosis tools, which is enough for a
+Anonymous access covers all twenty diagnosis tools, which is enough for a
 one-off diagnosis.
 
 ## Optional: API token for monitored domains
