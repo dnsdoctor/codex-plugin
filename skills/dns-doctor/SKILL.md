@@ -4,10 +4,8 @@ description: Use when the user wants to look up DNS records, verify a DNS change
 license: Apache-2.0
 compatibility: Talks to the DNS Doctor MCP server at https://dnsdoctor.dev/mcp (hosted) or via the local `@dnsdoctor/mcp` stdio client; needs outbound HTTPS.
 metadata:
-  {
-    "homepage": "https://dnsdoctor.dev/methodology",
-    "author": "DNS Doctor"
-  }
+  homepage: https://dnsdoctor.dev/methodology
+  author: DNS Doctor
 ---
 
 # DNS Doctor — the DNS, DMARC, SPF and DKIM skill
@@ -109,7 +107,7 @@ The tools come from the DNS Doctor MCP server. Two ways to reach it:
 - **Streamable HTTP (default, no setup):** `https://dnsdoctor.dev/mcp` — anonymous
   access exposes all the scanner tools. This plugin's MCP configuration already points
   here.
-- **Local stdio:** `npx -y @dnsdoctor/mcp@1.21.1` — the same 29 tools, run as a local
+- **Local stdio:** `npx -y @dnsdoctor/mcp@1.21.3` — the same 29 tools, run as a local
   process that calls the public DNS Doctor REST API. Use it when your client
   prefers stdio, or when you want the server under your own supervision. Its README
   explains account access for the monitoring reads.
