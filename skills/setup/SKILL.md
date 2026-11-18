@@ -290,26 +290,49 @@ this list, so add no fact of your own there.
      it. If they cannot edit DMARC, print the TXT record that
      `add_monitored_domain` returned (`challenge.host`, `challenge.value`)
      verbatim instead. If the result has `dns_connect.apply_url`, offer that
-     one-click link first. End with: "Publish it, then tell me and I'll check
-     again." The check's outcome is `not_found` until they publish, which is
-     expected. When they say it is done, call `check_domain_verification`
-     again:
-     - `verified`: one line that monitoring is on; mail providers send DMARC
-       reports about once a day, so the first ones arrive within a few days.
-       Done.
-     - `not_found` or `mismatch`: `check_record` with `expected_value` set to
+     one-click link first. When the result has `dns_host`, say where the DNS
+     lives (`dns_host.says`) and, from `dns_host.name_fields`, what goes in the
+     Name field. When it has `agent`, follow `agent.says` and ask the user
+     before making any DNS change. If they cannot edit DNS but can upload
+     files to the website on this exact domain, `guidance.website_file` is the
+     other way: a plain text file at its `url` whose only content is its
+     `content`, both exactly as given; it proves ownership but does not start
+     the reports. End with: "Publish it, then tell me and I'll check again."
+     The check's outcome is `not_found` until they publish, which is expected.
+     When they say it is done, call `check_domain_verification` again:
+     - `verified` after the DMARC record: one line that monitoring is on; mail
+       providers send DMARC reports about once a day, so the first ones arrive
+       within a few days. Done.
+     - `verified` after the website file or the TXT record: ownership is
+       proved, but no DMARC reports come until the DMARC record is published.
+       Print `enrollment.host` and `enrollment.record` from this result, when present,
+       verbatim and ask them to publish it; never say reports are on their way
+       before it is.
+     - `not_found` or `mismatch` for a DNS record: relay each
+       `diagnosis.causes[].says` first, as given, when present (it says why the
+       record was not found). Then `check_record` with `expected_value` set to
        the record answers `done`, `wait` (wait `check_again_after_seconds`
        before checking again) or `edit` (relay `found_at`). End with when to
        look again.
+     - `not_found` for the website file: `check_record` reads DNS, not files,
+       so do not call it. Ask them to open `guidance.website_file.url` in a
+       browser: over https, on this domain or its `www.`, it must show
+       exactly `guidance.website_file.content` as plain text and nothing else
+       (not an HTML page). Then check again; the background check never looks
+       for the file, only this call does.
      - A `transient` or `fault` outcome is our lookup, not their DNS: try
        again shortly.
-     Tell them they don't have to come back: for a week after the domain is
-     added, DNS Doctor re-checks it on its own and emails them once it's
-     verified.
+     Never promise a background re-check on your own: when
+     `next_steps.in_chat.say` tells them they don't have to come back, relay
+     that sentence with its date as given; when it does not, tell them to come
+     back and ask you to check again.
      If the user cannot make the DNS change themselves, offer the ready
      `help.ticket` message for their DNS host's support, or `help.web_person`
      for whoever manages their DNS, verbatim; never compose a record.
      `help.support_url`, when present, is their host's support page.
+     `help.share_url` is a link they can send to whoever runs their DNS: a page
+     with the exact record and a live check, no account needed. Print it
+     verbatim.
    - **Website setup**: call `start_monitoring_signup` and show its `signup_url`
      as a clickable link with its `message`, using the returned URL without changing
      it. A description without printing the URL is not enough. Use this path
